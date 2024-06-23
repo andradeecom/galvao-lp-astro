@@ -1,0 +1,104 @@
+---
+import Email from '../assets/icons/Email.astro';
+import User from '../assets/icons/User.astro';
+import Phone from '../assets/icons/Phone.astro';
+---
+
+<form id="contact-form" method="POST">
+  <label class="input input-bordered input-info mb-4 flex items-center gap-2">
+    <User class="size-5"/>
+    <input type="text" id="name" name="name" class="grow" placeholder="Teu nome" required />
+  </label>
+  <label class="input input-bordered input-info mb-4 flex items-center gap-2">
+    <Email class="size-5"/>
+    <input type="email" id="email" name="email" class="grow" placeholder="Teu melhor e-mail" required />
+  </label>
+  <label class="input input-bordered input-info mb-2 flex items-center gap-2">
+    <Phone class="size-5"/>
+    <input type="tel" id="phone" name="phone" class="grow" placeholder="Teu número de telefone" required />
+  </label>
+  <label class="label justify-start gap-4">
+    <input type="checkbox" checked="checked" name="privacy" class="checkbox checkbox-info" required />
+    <span class="label-text">Aceito a <a class="link" aria-label="política de privacidade" href="/privacy-policy" target="_blank">política de privacidade</a> e ser contatado para efeitos comerciais.</span> 
+  </label>
+  <button class="btn btn-info btn-block mt-8" type="submit">
+    <span id="loading-spinner" class="loading loading-spinner loading-sm hidden"></span>
+    <span id="button-text">Enviar</span>
+  </button>
+</form>
+
+<script>
+  import axios from 'axios';
+  import { z } from 'zod';
+import { regexPatterns } from '../utils/constants';
+
+  /**
+   * TODO:
+   * - Loading state
+   * - validation for phone number
+   */
+
+  const schema = z.object({
+    name: z.string().min(1, 'Nome é um campo obrigatório'),
+    email: z.string().email('Email inválido'),
+    phone: z.string().min(9, 'Número de telefone deve ter no mínimo 9 dígitos').regex(regexPatterns.PHONE, 'Número de telefone inválido'),
+    privacy: z.string(),
+  });
+
+  const handleSubmit = async (event: Event) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    const body = {
+      name: formData.get('name')?.toString() || '',
+      email: formData.get('email')?.toString() || '',
+      phone: formData.get('phone')?.toString() || '',
+      privacy: formData.get('privacy')?.toString() || '',
+    };
+
+    // Object sent:
+    // {
+    //   email: "edu@email.com"
+    //   name: "edu"
+    //   phone: "123435655"
+    //   privacy: "on"
+    // }
+
+    const result = schema.safeParse(body);
+    if (!result.success) {
+      const errors = result.error.errors;
+      alert(errors.map(error => error.message).join('\n'));
+      return;
+    }
+
+    const loadingSpinner = document.getElementById('loading-spinner');
+    const buttonText = document.getElementById('button-text');
+
+    loadingSpinner?.classList.remove('hidden');
+    buttonText?.classList.add('hidden');
+
+    try {
+      const response = await axios.post('/api/save-contact', body, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      });
+
+      if (response.status === 201) {
+        alert('Email sent successfully!');
+      } else {
+        alert('Failed to send email.');
+      }
+    } catch (error) {
+      alert('Failed to send email. Please try again later.');
+    } finally {
+      loadingSpinner?.classList.add('hidden');
+      buttonText?.classList.remove('hidden');
+    }
+  };
+
+  const form = document.getElementById("contact-form");
+  if (form) form.addEventListener("submit", handleSubmit);
+  
+</script>
