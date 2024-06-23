@@ -39,96 +39,217 @@ import T23 from '../assets/images/transforms/23.webp';
  *  https://youtube.com/shorts/v28fKkkM5qA
  *  https://youtu.be/Oio-TLbCwwY
  */
-
 ---
 
-<Layout 
-	title="Galvão Coach | Personal Trainer Online - Planos de dieta individuais e de treino para casa ou ginásio"
-	description='Consegue o teu melhor corpo de sempre, sem passar fome e a comer o que gostas! Muda o teu corpo enquanto comes o que gostas, com planos de dieta individuais e de treino para casa ou ginásio, totalmente personalizado para ti e para a tua rotina'
+<Layout
+    title="Galvão Coach | Personal Trainer Online - Planos de dieta individuais e de treino para casa ou ginásio"
+    description="Consegue o teu melhor corpo de sempre, sem passar fome e a comer o que gostas! Muda o teu corpo enquanto comes o que gostas, com planos de dieta individuais e de treino para casa ou ginásio, totalmente personalizado para ti e para a tua rotina"
 >
-	<main class="px-8 pt-5 lg:px-20 lg:pt-10">
-		<section class="flex items-center justify-center flex-wrap lg:flex-nowrap gap-10">
-			<div class="-mt-52 md:-mt-28 lg:mt-0">
-				<Image src={GalvaoHeroImage} alt="Foto de perfil do Galvão Coach" class="rounded-xl size-[750px] object-contain lg:object-cover" loading="eager" />
-				<!-- <Signature class="absolute bottom-20 left-56 text-slate-50 w-72" /> -->
-			</div>
-			<div class="lg:max-w-2xl lg:-ml-10 md:-mt-48 lg:mt-10 -mt-64 z-10">
-				<h1 class=" text-3xl text-center lg:text-start lg:text-5xl font-bold mb-6">Consegue o teu melhor corpo de sempre, <span class="text-info font-bold">sem passar fome e a comer</span> o que gostas!</h1>
-				<h2 class="text-lg text-center lg:text-start lg:text-xl mb-6">
-					Muda o teu corpo enquanto comes o que gostas, com planos de dieta individuais e de treino para casa ou ginásio, <strong class="text-info">totalmente personalizado</strong> para ti e para a tua rotina
-				</h2>
-				<div>
-					<h3 class="text-lg text-center lg:text-xl lg:text-start font-bold mb-4">Deixa-nos o teu contacto e entra na lista de espera:</h3>
-					<ContactForm />
-				</div>
-			</div>
-		</section>
-		<section class="mt-32">
-			<h2 class="text-3xl font-bold mb-20 text-center">Estas são várias tranformações reais de alguns membros do nosso programa:</h2>
-			<div class="carousel p-4 rounded-box">
-				<div class="carousel-item gap-4">
-				  <Image src={T1} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T2} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T3} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T4} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T5} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T6} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T7} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T8} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T9} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T10} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T11} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T12} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T13} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T14} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T15} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T16} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T17} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T18} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T19} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T20} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T21} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T22} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				  <Image src={T23} class="rounded-box size-[320px] lg:size-[400px]" alt="foto de atleta antes e depois de passar pelo programa de transformação corporal" />
-				</div>
-			  </div>
-		</section>
-		<section class="mt-32">
-			<h2 class="text-3xl font-bold mb-20 text-center">Ao que tens direito no nosso programa 100% individual?</h2>
-			<div class="flex justify-around flex-wrap gap-6">
-				<Card
-					title="Avaliação Completa"
-					body="Para criar planos 100% adequados a ti e a como te encontras , vamos realizar uma avaliação para saber como te vamos montar o plano nutricional, SÓ com alimentos que gostes de comer no dia a dia , e sem sofrer na abordagem. O mesmo seguirá em relação ao teu treino (se necessário) , em casa ou no ginásio. Assim vamos ter todas as ferramentas para montar a tua abordagem 100% de forma individual e com garantia de excelência"
-				/>
-				<Card
-					title="Individualidade e adaptação"
-					body="Vais ter acompanhamento com a minha equipa diariamente! No teu plano vamos colocar sempre alimentos que gostes, e se te fartares dos mesmos trocamos no dia por outros novos que te agradem e te façam chegar ao objetivo proposto, sem nunca te fartares da abordagem, e tendo prazer no que comes! Vais poder continuar a ter vida social e sair com amigos, enquanto tens resultados"
-				/>
-				<Card
-					title="Acompanhamento constante"
-					body="Vamos ter avaliações contigo semanais ou quinzenais, para perceber como está a reagir o teu corpo e fazer as mudanças devidas! Nunca te vais sentir só! A nossa equipa vai analisar as mudanças corporais até ao milimetro e adaptar o treino e a dieta em prol da tua evolução!"
-				/>
-			</div>
-		</section>
-		<section class="mt-32">
-			<h2 class="text-3xl font-bold mb-20 text-center">A nossa melhor montra, são os nossos clientes satisfeitos:</h2>
-			<div class="flex flex-col lg:flex-row justify-center gap-5">
-				<YouTube 
-					class='lg:w-1/3'
-					id="https://youtube.com/shorts/v28fKkkM5qA"
-				/>
-				<YouTube 
-					class='lg:w-1/3'
-					id="https://youtu.be/Oio-TLbCwwY"
-				/>
-			</div>
-		</section>
-		<section class="mt-32">
-			<h2 class="text-3xl font-bold mb-8 text-center">Não percas mais tempo nem adies a tua transformação!</h2>
-			<div class="max-w-2xl mx-auto">
-				<h3 class="font-bold text-xl text-center mb-4">Para garantires uma das vagas limitadas no nosso programa, preenche os dados abaixo:</h3>
-				<ContactForm />
-			</div>
-		</section>
-	</main>
+    <main class="px-8 pt-5 lg:px-20 lg:pt-10">
+        <section
+            class="flex items-center justify-center flex-wrap lg:flex-nowrap gap-10"
+        >
+            <div class="-mt-52 md:-mt-28 lg:mt-0">
+                <Image
+                    src={GalvaoHeroImage}
+                    alt="Foto de perfil do Galvão Coach"
+                    class="rounded-xl size-[750px] object-contain lg:object-cover"
+                    loading="eager"
+                />
+                <!-- <Signature class="absolute bottom-20 left-56 text-slate-50 w-72" /> -->
+            </div>
+            <div class="lg:max-w-2xl lg:-ml-10 md:-mt-48 lg:mt-10 -mt-64 z-10">
+                <h1
+                    class="text-3xl text-center lg:text-start lg:text-5xl font-bold mb-6"
+                >
+                    Consegue o teu melhor corpo de sempre, <span
+                        class="text-info font-bold"
+                        >sem passar fome e a comer</span
+                    > o que gostas!
+                </h1>
+                <h2 class="text-lg text-center lg:text-start lg:text-xl mb-6">
+                    Muda o teu corpo enquanto comes o que gostas, com planos de
+                    dieta individuais e de treino para casa ou ginásio, <strong
+                        class="text-info">totalmente personalizado</strong
+                    > para ti e para a tua rotina
+                </h2>
+                <div>
+                    <h3
+                        class="text-lg text-center lg:text-xl lg:text-start font-bold mb-4"
+                    >
+                        Deixa-nos o teu contacto e entra na lista de espera:
+                    </h3>
+                    <ContactForm />
+                </div>
+            </div>
+        </section>
+        <section class="mt-32">
+            <h2 class="text-3xl font-bold mb-20 text-center">
+                Estas são várias tranformações reais de alguns membros do nosso
+                programa:
+            </h2>
+            <div class="carousel p-4 rounded-box">
+                <div class="carousel-item gap-4">
+                    <Image
+                        src={T1}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T2}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T3}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T4}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T5}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T6}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T7}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T8}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T9}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T10}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T11}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T12}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T13}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T14}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T15}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T16}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T17}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T18}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T19}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T20}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T21}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T22}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                    <Image
+                        src={T23}
+                        class="rounded-box size-[320px] lg:size-[400px]"
+                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
+                    />
+                </div>
+            </div>
+        </section>
+        <section class="mt-32">
+            <h2 class="text-3xl font-bold mb-20 text-center">
+                Ao que tens direito no nosso programa 100% individual?
+            </h2>
+            <div class="flex justify-around flex-wrap gap-6">
+                <Card
+                    title="Avaliação Completa"
+                    body="Para criar planos 100% adequados a ti e a como te encontras , vamos realizar uma avaliação para saber como te vamos montar o plano nutricional, SÓ com alimentos que gostes de comer no dia a dia , e sem sofrer na abordagem. O mesmo seguirá em relação ao teu treino (se necessário) , em casa ou no ginásio. Assim vamos ter todas as ferramentas para montar a tua abordagem 100% de forma individual e com garantia de excelência"
+                />
+                <Card
+                    title="Individualidade e adaptação"
+                    body="Vais ter acompanhamento com a minha equipa diariamente! No teu plano vamos colocar sempre alimentos que gostes, e se te fartares dos mesmos trocamos no dia por outros novos que te agradem e te façam chegar ao objetivo proposto, sem nunca te fartares da abordagem, e tendo prazer no que comes! Vais poder continuar a ter vida social e sair com amigos, enquanto tens resultados"
+                />
+                <Card
+                    title="Acompanhamento constante"
+                    body="Vamos ter avaliações contigo semanais ou quinzenais, para perceber como está a reagir o teu corpo e fazer as mudanças devidas! Nunca te vais sentir só! A nossa equipa vai analisar as mudanças corporais até ao milimetro e adaptar o treino e a dieta em prol da tua evolução!"
+                />
+            </div>
+        </section>
+        <section class="mt-32">
+            <h2 class="text-3xl font-bold mb-20 text-center">
+                A nossa melhor montra, são os nossos clientes satisfeitos:
+            </h2>
+            <div class="flex flex-col lg:flex-row justify-center gap-5">
+                <YouTube
+                    class="lg:w-1/3"
+                    id="https://youtube.com/shorts/v28fKkkM5qA"
+                />
+                <YouTube class="lg:w-1/3" id="https://youtu.be/Oio-TLbCwwY" />
+            </div>
+        </section>
+        <section class="mt-32">
+            <h2 class="text-3xl font-bold mb-8 text-center">
+                Não percas mais tempo nem adies a tua transformação!
+            </h2>
+            <div class="max-w-2xl mx-auto">
+                <h3 class="font-bold text-xl text-center mb-4">
+                    Para garantires uma das vagas limitadas no nosso programa,
+                    preenche os dados abaixo:
+                </h3>
+                <ContactForm />
+            </div>
+        </section>
+    </main>
 </Layout>
