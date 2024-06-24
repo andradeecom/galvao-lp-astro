@@ -7,37 +7,56 @@ export default {
     extend: {
       colors: {
         bgteam: {
-          // Pumpkin
-          // 50: '#fff4ed',
-          // 100: '#ffe6d5',
-          // 200: '#feccaa',
-          // 300: '#fdac74',
-          // 400: '#fb8a3c',
-          // 500: '#f97316',
-          // 600: '#ea670c',
-          // 700: '#c2570c',
-          // 800: '#9a4a12',
-          // 900: '#7c3d12',
-          // 950: '#432007',
-
-          // Midnight
-          50: "#e4f3ff",
-          100: "#cfe8ff",
-          200: "#a8d3ff",
-          300: "#74b4ff",
-          400: "#3e82ff",
-          500: "#1350ff",
-          600: "#003bff",
-          700: "#003bff",
-          800: "#0035e4",
-          900: "#0023b0",
-          950: "#000729",
+          transparent: "transparent",
+          dark: "#020617", // slate-950
+          light: "#f1f5f9", // slate-100
+          primary: {
+            50: "#edf5ff",
+            100: "#d7e7ff",
+            200: "#b9d6ff",
+            300: "#88bdff",
+            400: "#5099ff",
+            500: "#2871ff",
+            600: "#1350ff",
+            700: "#0a39eb",
+            800: "#0f2ebe",
+            900: "#132e95",
+            950: "#111e5a",
+          },
+          secondary: {
+            50: "#f4f3ff",
+            100: "#ebe9fe",
+            200: "#d9d6fe",
+            300: "#beb6fc",
+            400: "#9d8cf9",
+            500: "#7e5df5",
+            600: "#6c3ceb",
+            700: "#5d2ad7",
+            800: "#4d22b3",
+            900: "#411e94",
+            950: "#261164",
+          },
         },
       },
     },
   },
   plugins: [daisyui],
-  // daisyui: {
-  //     themes: ['night'],
-  // },
+  daisyui: {
+    themes: [
+      {
+        dark: {
+          ...require("daisyui/src/theming/themes")["dark"],
+          primary: "#2871ff",
+          secondary: "#7e5df5",
+          accent: "#88bdff",
+          neutral: "#111e5a",
+          "base-100": "#d7e7ff",
+          info: "#5d2ad7",
+          success: "#22c55e", // green-500
+          warning: "#eab308", // yellow-500
+          error: "#ef4444", // red-500
+        },
+      },
+    ],
+  },
 };

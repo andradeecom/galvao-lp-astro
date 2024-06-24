@@ -5,8 +5,10 @@ import Phone from '../assets/icons/Phone.astro';
 ---
 
 <form id="contact-form" method="POST">
-    <label class="input input-bordered input-info mb-4 flex items-center gap-2">
-        <User class="size-5" />
+    <label
+        class="input input-bordered input-primary text-bgteam-dark mb-4 flex items-center gap-2"
+    >
+        <User class="size-5 text-primary" />
         <input
             type="text"
             id="name"
@@ -16,8 +18,10 @@ import Phone from '../assets/icons/Phone.astro';
             required
         />
     </label>
-    <label class="input input-bordered input-info mb-4 flex items-center gap-2">
-        <Email class="size-5" />
+    <label
+        class="input input-bordered input-primary text-bgteam-dark mb-4 flex items-center gap-2"
+    >
+        <Email class="size-5 text-primary" />
         <input
             type="email"
             id="email"
@@ -27,8 +31,10 @@ import Phone from '../assets/icons/Phone.astro';
             required
         />
     </label>
-    <label class="input input-bordered input-info mb-2 flex items-center gap-2">
-        <Phone class="size-5" />
+    <label
+        class="input input-bordered input-primary text-bgteam-dark mb-2 flex items-center gap-2"
+    >
+        <Phone class="size-5 text-primary" />
         <input
             type="tel"
             id="phone"
@@ -43,7 +49,7 @@ import Phone from '../assets/icons/Phone.astro';
             type="checkbox"
             checked="checked"
             name="privacy"
-            class="checkbox checkbox-info"
+            class="checkbox checkbox-primary"
             required
         />
         <span class="label-text"
@@ -55,7 +61,7 @@ import Phone from '../assets/icons/Phone.astro';
             > e ser contatado para efeitos comerciais.</span
         >
     </label>
-    <button class="btn btn-info btn-block mt-8" type="submit">
+    <button class="btn btn-primary btn-block mt-8" type="submit">
         <span
             id="loading-spinner"
             class="loading loading-spinner loading-sm hidden"></span>
