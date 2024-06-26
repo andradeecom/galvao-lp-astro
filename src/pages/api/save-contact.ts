@@ -59,10 +59,9 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("contacts")
-      .insert([{ name, email, phone_number: phone, privacy }])
-      .select();
+      .insert([{ name, email, phone, privacy }]);
     if (error) {
       return new Response(
         JSON.stringify({
@@ -81,18 +80,18 @@ export const POST: APIRoute = async ({ request }) => {
 
     const emailData = {
       from: "BG Team <bernardo@galvaocoach.com>",
-      to: ["edu2andrade@gmail.com"],
-      subject: "New Contact Form Submission!",
+      to: ["bernardoggalvao@gmail.com"],
+      subject: "BG Team - New Contact Form Submission!",
       html: `
-                <h1>New contact data submitted:</h1>
-                <br/>
-                <p>Name: ${name}</p>
-                <p>Email: ${email}</p>
-                <p>Phone: ${phone}</p>
-                <br/>
-                <hr/>
-                <p>This message was sent from your contact form on galvaocoach.com</p>
-            `,
+          <h1>New contact data submitted:</h1>
+          <br/>
+          <p>Name: ${name}</p>
+          <p>Email: ${email}</p>
+          <p>Phone: ${phone}</p>
+          <br/>
+          <hr/>
+          <p>This message was sent from your contact form on galvaocoach.com</p>
+      `,
     };
 
     await transporter.sendMail(emailData);
