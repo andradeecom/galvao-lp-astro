@@ -20,6 +20,7 @@
     "@astro-community/astro-embed-youtube": "^0.5.2",
     "@astrojs/check": "^0.7.0",
     "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/vercel": "^7.7.2",
     "@fontsource-variable/exo": "^5.0.19",
     "@hookform/resolvers": "^3.6.0",
     "@supabase/supabase-js": "^2.43.5",
