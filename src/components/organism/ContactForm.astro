@@ -1,7 +1,7 @@
 ---
-import Email from '../assets/icons/Email.astro';
-import User from '../assets/icons/User.astro';
-import Phone from '../assets/icons/Phone.astro';
+import Email from '../../assets/icons/Email.astro';
+import User from '../../assets/icons/User.astro';
+import Phone from '../../assets/icons/Phone.astro';
 ---
 
 <form id="contact-form" method="POST">
@@ -72,7 +72,7 @@ import Phone from '../assets/icons/Phone.astro';
 <script>
     import axios from 'axios';
     import { z } from 'zod';
-    import { regexPatterns } from '../utils/constants';
+    import { regexPatterns } from '../../utils/constants';
 
     const schema = z.object({
         name: z.string().min(1, 'Nome é um campo obrigatório'),

@@ -17,7 +17,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
     </header>
     <main class="px-20 pt-10">
-        <h2 class="text-xl font-bold mb-6">Preâmbulo</h2>
+        <!-- <h2 class="text-xl font-bold mb-6">Preâmbulo</h2>
         <ol class="mb-6">
             <li class="mb-3">
                 Estas condições gerais de venda são acordadas entre Bernardo
@@ -39,17 +39,15 @@ import Layout from '../layouts/Layout.astro';
                 > serão reguladas exclusivamente pelo presente contrato com exclusão
                 de quaisquer condições previamente disponíveis no website.
             </li>
-        </ol>
+        </ol> -->
         <h2 class="text-xl font-bold mb-6">Artigo 1 - Objeto</h2>
         <ol class="mb-6">
             <li class="mb-3">
                 As presentes condições gerais de venda têm por objecto
                 disponibilizar e definir todas as informações necessárias ao
                 Utilizador sobre as modalidades de encomenda, de venda,
-                pagamento e prestação do serviço, efetuado no website{' '}
-                <a aria-label="Home" class="link-hover" href="/"
-                    >galvaocoach.com</a
-                >
+                pagamento e prestação do serviço, efetuado no link de pagamento
+                disponibilizado por Galvao Coach.{' '}
             </li>
             <li class="mb-3">
                 Estas condições regulam todas as etapas necessárias para
@@ -61,34 +59,20 @@ import Layout from '../layouts/Layout.astro';
         <ol class="mb-6">
             <li class="mb-3">
                 O Utilizador concretiza a sua encomenda através da conclusão do
-                processo de compra apresentado no website{' '}
-                <a aria-label="Home" class="link-hover" href="/"
-                    >galvaocoach.com</a
-                >, adicionando o(s) produto(s) ou serviço(s) que pretende
-                encomendar ao cesto de compras:
+                processo de compra apresentado no link de checkout enviado por
+                Galvao Coach, adicionando o(s) produto(s) ou serviço(s) que
+                pretende encomendar.
             </li>
             <li class="mb-3">
-                Para enviar a sua encomenda o Utilizador deverá:
+                Para finalizar a sua encomenda o Utilizador deverá:
             </li>
-            <ol type="a">
+            <ul class="list-disc ml-8">
                 <li class="mb-3">
-                    Registar-se no website{' '}
-                    <a aria-label="Home" class="link-hover" href="/"
-                        >galvaocoach.com</a
-                    >, fornecendo para o efeito as informações aí solicitadas.
+                    Completar a informação pedida no link de pagamento e
+                    escolher as opções que lhe são disponibilizadas ao longo do
+                    processo de término da encomenda.
                 </li>
-                <li class="mb-3">
-                    Efetuar o “login” (facultando uma combinação de e-mail e
-                    palavra passe escolhidas pelo Utilizador no ato de registo).
-                </li>
-                <li class="mb-3">
-                    Completar a informação e escolher as opções que lhe são
-                    disponibilizadas ao longo do processo de término da
-                    encomenda (morada de entrega e facturação, forma de envio,
-                    forma de pagamento, bem como o NIF e o nome que, para
-                    efeitos fiscais, pretende que constem na fatura).
-                </li>
-            </ol>
+            </ul>
             <li class="mb-3">
                 A confirmação final da encomenda pelo Utilizador equivale à
                 aceitação plena e completa dos preços e descrição dos
@@ -115,20 +99,16 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="text-xl font-bold mb-6">Artigo 3 - Pagamento</h2>
         <ol class="mb-6">
             <li class="mb-3">
-                No website{' '}
-                <a aria-label="Home" class="link-hover" href="/"
-                    >galvaocoach.com</a
-                >, Galvão Coach propõe ao Utilizador as seguintes modalidades de
+                Galvão Coach propõe ao Utilizador as seguintes modalidades de
                 pagamento via Stripe Payments:
             </li>
-            <ol type="a">
-                <li class="list-decimal ml-8 mb-3">
-                    Cartão de crédito (Visa, Mastercard);
-                </li>
-                <li class="list-decimal ml-8 mb-3">Apple Pay;</li>
-                <li class="list-decimal ml-8 mb-3">Google Pay;</li>
-            </ol>
-            <li class="mb-3">
+            <ul class="list-disc ml-8">
+                <li>Cartão de crédito (Visa, Mastercard);</li>
+                <li>Apple Pay;</li>
+                <li>Google Pay;</li>
+                <li>Débito directo (SEPA);</li>
+            </ul>
+            <li class="my-3">
                 No caso do pagamento com cartão de crédito, o débito será
                 efetuado no cartão do Utilizador imediatamente após confirmação
                 da capacidade de prestação do serviço. Se algum dos serviços
@@ -137,6 +117,7 @@ import Layout from '../layouts/Layout.astro';
                 encomenda.
             </li>
         </ol>
+
         <h2 class="text-xl font-bold mb-6">
             Artigo 4 - Disponibilização e consumo
         </h2>
