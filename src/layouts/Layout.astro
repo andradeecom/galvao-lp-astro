@@ -1,6 +1,6 @@
 ---
 import '@fontsource-variable/exo';
-import BGteam from '../assets/images/BGteam.astro';
+import BGteam from '@/assets/images/BGteam.astro';
 
 interface Props {
     title: string;
@@ -29,35 +29,36 @@ const { title, description } = Astro.props;
     </head>
     <body class="bg-bgteam-dark text-bgteam-light">
         <slot />
+        <footer
+            class="flex flex-col justify-center items-center mt-32 py-12 bg-bgteam-primary-950"
+        >
+            <a href="/" aria-label="Home">
+                <BGteam class="size-32 mb-4" />
+            </a>
+            <div class="flex gap-3 flex-wrap justify-center mb-12 px-8">
+                <a
+                    class="link-hover"
+                    href="/terms-and-conditions"
+                    aria-label="Termos e Condições do serviço"
+                    rel="nofollow"
+                    target="_blank">Termos e Condições do serviço</a
+                >
+                <a
+                    class="link-hover"
+                    href="/privacy-policy"
+                    aria-label="Poíticas de privacidade"
+                    rel="nofollow"
+                    target="_blank">Políticas de privacidade</a
+                >
+            </div>
+            <span class="px-8 text-center">
+                Copyright &copy; 2024 - Bernardo Galvão Personal Trainer &
+                Online Coach
+            </span>
+        </footer>
     </body>
-    <footer
-        class="flex flex-col justify-center items-center mt-32 py-12 bg-bgteam-primary-950"
-    >
-        <a href="/" aria-label="Home">
-            <BGteam class="size-32 mb-4" />
-        </a>
-        <div class="flex gap-3 flex-wrap justify-center mb-12 px-8">
-            <a
-                class="link-hover"
-                href="/terms-and-conditions"
-                aria-label="Termos e Condições do serviço"
-                rel="nofollow"
-                target="_blank">Termos e Condições do serviço</a
-            >
-            <a
-                class="link-hover"
-                href="/privacy-policy"
-                aria-label="Poíticas de privacidade"
-                rel="nofollow"
-                target="_blank">Políticas de privacidade</a
-            >
-        </div>
-        <span class="px-8 text-center">
-            Copyright &copy; 2024 - Bernardo Galvão Personal Trainer & Online
-            Coach
-        </span>
-    </footer>
 </html>
+
 <style is:global>
     :root {
         --accent: 136, 58, 234;

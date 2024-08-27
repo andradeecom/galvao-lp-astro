@@ -10,6 +10,9 @@ export default {
           transparent: "transparent",
           dark: "#020617", // slate-950
           light: "#f1f5f9", // slate-100
+          text: "#111e5a", // neutral-950
+          error: "#ef4444", // red-500
+          success: "#22c55e", // green-500
           primary: {
             50: "#edf5ff",
             100: "#d7e7ff",

@@ -1,28 +1,9 @@
 import type { APIRoute } from "astro";
-import nodemailer from "nodemailer";
-import { createClient, type PostgrestError } from "@supabase/supabase-js";
-
-// Create a transporter object using SMTP transport with custom domain
-const transporter = nodemailer.createTransport({
-  host: import.meta.env.SMTP_HOST,
-  port: parseInt(import.meta.env.SMTP_PORT || "465"), // Use 587 for TLS, 465 for SSL
-  secure: true, // Use true if you're connecting over SSL/TLS
-  auth: {
-    user: import.meta.env.SMTP_USER,
-    pass: import.meta.env.SMTP_PASS,
-  },
-});
-
-const supabaseUrl = import.meta.env.SUPABASE_URL;
-const supabaseKey = import.meta.env.SUPABASE_ANON_PUBLIC_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey || "");
-
-interface ContactFormData {
-  name: string;
-  email: string;
-  phone: string;
-  privacy: string;
-}
+import type { BaseContact } from "@/types/contact";
+import { v4 as uuidv4 } from "uuid";
+import { supabase } from "@/config/supabase";
+import type { PostgrestError } from "@supabase/supabase-js";
+import { transporter } from "@/config/nodemailer";
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -41,8 +22,7 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const { name, email, phone, privacy }: ContactFormData =
-      await request.json();
+    const { name, email, phone, privacy }: BaseContact = await request.json();
 
     if (!name || !email || !phone) {
       return new Response(
@@ -59,14 +39,18 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    const token = uuidv4();
+    const expirationDate = new Date().getTime() + 1000 * 60 * 60 * 24; // 24 hours
+
     const { error } = await supabase
-      .from("contacts")
-      .insert([{ name, email, phone, privacy }]);
+      .from("pending_contacts")
+      .insert([{ name, email, phone, privacy, token, expirationDate }]);
+
     if (error) {
       return new Response(
         JSON.stringify({
           status: 500,
-          message: "Failed to save contacts",
+          message: "Failed to save contact data",
           error: (error as PostgrestError).message,
         }),
         {
@@ -77,20 +61,20 @@ export const POST: APIRoute = async ({ request }) => {
         },
       );
     }
-
+    // Send email confirmation
+    const confirmUrl = `http://localhost:4321/confirm-contact?token=${token}`;
     const emailData = {
       from: "BG Team <bernardo@galvaocoach.com>",
-      to: ["bernardoggalvao@gmail.com"],
-      subject: "BG Team - New Contact Form Submission!",
+      to: [email],
+      subject: "BG Team - Por favor confirma o teu email!",
       html: `
-          <h1>New contact data submitted:</h1>
-          <br/>
-          <p>Name: ${name}</p>
-          <p>Email: ${email}</p>
-          <p>Phone: ${phone}</p>
-          <br/>
-          <hr/>
-          <p>This message was sent from your contact form on galvaocoach.com</p>
+        <h1>Confirma o teu email</h1>
+        <p>Olá ${name},</p>
+        <p>Obrigado pelo teu interesse. Por favor clica no link abaixo para confirmares o teu email e completar o processo de inscrição:</p>
+        <a href="${confirmUrl}">Confirmar email</a>
+        <hr/>
+        <p>Se não te inscreveste na plataforma, por favor ignora este email.</p>
+        <span>Esta mensagem foi enviada através do contact form no site <a href="https://www.galvaocoach.com/">galvaocoach.com</a></span>
       `,
     };
 
@@ -99,7 +83,7 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(
       JSON.stringify({
         status: 201,
-        message: "Contact saved successfully",
+        message: "Confirmation email sent",
       }),
       {
         status: 201,
@@ -112,7 +96,7 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(
       JSON.stringify({
         status: 500,
-        message: "Failed to save contact",
+        message: "Failed to send confirmation email",
         error: (error as Error).message,
       }),
       {

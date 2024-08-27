@@ -1,3 +1,4 @@
+import { AlertCircle } from "lucide-react";
 import { type InputHTMLAttributes } from "react";
 import type { UseFormRegister, FieldError } from "react-hook-form";
 
@@ -7,7 +8,7 @@ import type { UseFormRegister, FieldError } from "react-hook-form";
  */
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  label?: string;
   rightLabel?: string;
   placeholder?: string;
   name: string;
@@ -35,7 +36,7 @@ const Input = (props: InputProps) => {
   return (
     <div className="mb-4">
       <label
-        className={`input input-bordered flex items-center gap-2 ${error && "border-custom-error"} ${error && "outline-error"}`}
+        className={`input input-bordered input-primary flex items-center gap-2 text-bgteam-text ${error && "outline-bgteam-error outline-none active:focus:outline-bgteam-error"}`}
       >
         {leftIcon && <span>{leftIcon}</span>}
         <input
@@ -66,7 +67,10 @@ const Input = (props: InputProps) => {
         {rightIcon && <span className="-ml-5 z-10">{rightIcon}</span>}
       </div> */}
       {error && (
-        <p className="text-custom-error text-xs mt-2">{error.message}</p>
+        <div className="flex gap-1 items-center mt-2">
+          <AlertCircle className="text-bgteam-error" size={16} />
+          <p className="text-bgteam-error text-xs">{error.message}</p>
+        </div>
       )}
     </div>
   );
