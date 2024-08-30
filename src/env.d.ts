@@ -1,6 +1,7 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
 interface ImportMetaEnv {
+  readonly VITE_BASE_URL: string;
   readonly SUPABASE_URL: string;
   readonly SUPABASE_ANON_PUBLIC_KEY: string;
   readonly RECAPTCHA_SECRET_KEY: string;

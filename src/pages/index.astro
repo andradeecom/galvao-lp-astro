@@ -4,38 +4,15 @@ import Layout from '../layouts/Layout.astro';
 import GalvaoHeroImage from '../assets/images/galvao-hero.webp';
 import { YouTube } from '@astro-community/astro-embed-youtube';
 
-import T1 from '../assets/images/transforms/1.webp';
-import T2 from '../assets/images/transforms/2.webp';
-import T3 from '../assets/images/transforms/3.webp';
-import T4 from '../assets/images/transforms/4.webp';
-import T5 from '../assets/images/transforms/5.webp';
-import T6 from '../assets/images/transforms/6.webp';
-import T7 from '../assets/images/transforms/7.webp';
-import T8 from '../assets/images/transforms/8.webp';
-import T9 from '../assets/images/transforms/9.webp';
-import T10 from '../assets/images/transforms/10.webp';
-import T11 from '../assets/images/transforms/11.webp';
-import T12 from '../assets/images/transforms/12.webp';
-import T13 from '../assets/images/transforms/13.webp';
-import T14 from '../assets/images/transforms/14.webp';
-import T15 from '../assets/images/transforms/15.webp';
-import T16 from '../assets/images/transforms/16.webp';
-import T17 from '../assets/images/transforms/17.webp';
-import T18 from '../assets/images/transforms/18.webp';
-import T19 from '../assets/images/transforms/19.webp';
-import T20 from '../assets/images/transforms/20.webp';
-import T21 from '../assets/images/transforms/21.webp';
-import T22 from '../assets/images/transforms/22.webp';
-import T23 from '../assets/images/transforms/23.webp';
 import Card from '@/components/molecule/Card.astro';
-import ReactContactForm from '@/components/organism/ContactFormReact';
+import ContactForm from '@/components/organism/ContactForm.tsx';
+import Carousel from '@/components/organism/Carousel.astro';
 
 const RECAPTCHA_SITE_KEY = import.meta.env.RECAPTCHA_SITE_KEY;
 
 /**
  * TODO:
  * - Optimize SEO
- * - Extract the carousel to a component
  */
 ---
 
@@ -83,137 +60,17 @@ const RECAPTCHA_SITE_KEY = import.meta.env.RECAPTCHA_SITE_KEY;
                     >
                         Deixa-nos o teu contacto e entra na lista de espera:
                     </h3>
-                    <ReactContactForm
-                        siteKey={RECAPTCHA_SITE_KEY}
-                        client:load
-                    />
+                    <ContactForm siteKey={RECAPTCHA_SITE_KEY} client:load />
                 </div>
             </div>
         </section>
+
         <section class="mt-32">
             <h2 class="text-3xl font-bold mb-20 text-center">
                 Estas são várias tranformações reais de alguns membros do nosso
                 programa:
             </h2>
-            <div class="carousel p-4 max-w-full">
-                <div class="carousel-item gap-4">
-                    <Image
-                        src={T1}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T2}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T3}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T4}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T5}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T6}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T7}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T8}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T9}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T10}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T11}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T12}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T13}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T14}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T15}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T16}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T17}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T18}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T19}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T20}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T21}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T22}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                    <Image
-                        src={T23}
-                        class="carouselItem rounded-box size-[320px] lg:size-[400px]"
-                        alt="foto de atleta antes e depois de passar pelo programa de transformação corporal"
-                    />
-                </div>
-            </div>
+            <Carousel />
         </section>
         <section class="mt-32">
             <h2 class="text-3xl font-bold mb-20 text-center">
@@ -250,38 +107,13 @@ const RECAPTCHA_SITE_KEY = import.meta.env.RECAPTCHA_SITE_KEY;
             <h2 class="text-3xl font-bold mb-8 text-center">
                 Não percas mais tempo nem adies a tua transformação!
             </h2>
-            <div class="max-w-2xl mx-auto">
+            <div class="max-w-2xl mx-auto mb-32">
                 <h3 class="font-bold text-xl text-center mb-4">
                     Para garantires uma das vagas limitadas no nosso programa,
                     preenche os dados abaixo:
                 </h3>
-                <ReactContactForm siteKey={RECAPTCHA_SITE_KEY} client:load />
+                <ContactForm siteKey={RECAPTCHA_SITE_KEY} client:load />
             </div>
         </section>
     </main>
 </Layout>
-
-<style>
-    .carouselItem {
-        view-timeline-name: --reveal;
-        animation-timeline: --reveal;
-
-        animation-name: show;
-        animation-fill-mode: both;
-        animation-range: entry 25% cover 50%;
-
-        animation-duration: 1ms; /* Firefox requires this to apply the animation */
-    }
-
-    @keyframes show {
-        from {
-            opacity: 0;
-            scale: 10%;
-        }
-
-        to {
-            opacity: 1;
-            scale: 100%;
-        }
-    }
-</style>

@@ -1,7 +1,6 @@
 import type { APIRoute } from "astro";
 import type { BaseContact } from "@/types/contact";
-import { v4 as uuidv4 } from "uuid";
-import { supabase } from "@/config/supabase";
+import { supabase } from "@/config/supabase/client";
 import type { PostgrestError } from "@supabase/supabase-js";
 import { transporter } from "@/config/nodemailer";
 
@@ -39,18 +38,23 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const token = uuidv4();
-    const expirationDate = new Date().getTime() + 1000 * 60 * 60 * 24; // 24 hours
-
-    const { error } = await supabase
-      .from("pending_contacts")
-      .insert([{ name, email, phone, privacy, token, expirationDate }]);
+    const { data, error } = await supabase
+      .from("contacts")
+      .insert([
+        {
+          name,
+          email,
+          phone,
+          privacy,
+        },
+      ])
+      .select();
 
     if (error) {
       return new Response(
         JSON.stringify({
           status: 500,
-          message: "Failed to save contact data",
+          message: "Failed to save contact data (supabase)",
           error: (error as PostgrestError).message,
         }),
         {
@@ -61,29 +65,28 @@ export const POST: APIRoute = async ({ request }) => {
         },
       );
     }
-    // Send email confirmation
-    const confirmUrl = `http://localhost:4321/confirm-contact?token=${token}`;
+    const contactData = data[0];
     const emailData = {
       from: "BG Team <bernardo@galvaocoach.com>",
-      to: [email],
-      subject: "BG Team - Por favor confirma o teu email!",
+      to: ["bernardo@galvaocoach.com"],
+      subject: "BG Team - Novo contacto!",
       html: `
-        <h1>Confirma o teu email</h1>
-        <p>Olá ${name},</p>
-        <p>Obrigado pelo teu interesse. Por favor clica no link abaixo para confirmares o teu email e completar o processo de inscrição:</p>
-        <a href="${confirmUrl}">Confirmar email</a>
+        <h1>Olá Coach</h1>
+        <h3>Um novo contacto acaba de se inscrever através do site!</h3>
+        <p>Estes são os seus dados:</p>
+        <p>Nome: ${contactData.name}</p>
+        <p>Email: ${contactData.email}</p>
+        <p>Telefone: ${contactData.phone}</p>
         <hr/>
-        <p>Se não te inscreveste na plataforma, por favor ignora este email.</p>
-        <span>Esta mensagem foi enviada através do contact form no site <a href="https://www.galvaocoach.com/">galvaocoach.com</a></span>
+        <p>Esta mensagem foi enviada porque alguém se inscreveu em galvaocoach.com</p>
       `,
     };
-
+    // Send email to notify the coach
     await transporter.sendMail(emailData);
-
     return new Response(
       JSON.stringify({
         status: 201,
-        message: "Confirmation email sent",
+        message: "Email confirmed and contact saved successfully",
       }),
       {
         status: 201,
@@ -96,7 +99,7 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(
       JSON.stringify({
         status: 500,
-        message: "Failed to send confirmation email",
+        message: "Failed to save contact",
         error: (error as Error).message,
       }),
       {

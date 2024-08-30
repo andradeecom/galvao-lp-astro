@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import * as z from "zod";
 import { User, Mail, PhoneCall } from "lucide-react";
 import { regexPatterns } from "@/config/utils/constants";
 import Input from "@/components/atom/Input";
 import Checkbox from "@/components/atom/Checkbox";
+import Toast from "../molecule/Toast";
 
 const schema = z.object({
   name: z.string().min(3, "Nome é um campo obrigatório"),
@@ -23,13 +24,16 @@ const schema = z.object({
 
 type ContactFormInputs = z.infer<typeof schema>;
 
-interface ReactContactFormProps {
+interface ContactFormProps {
   siteKey: string;
 }
 
-const ReactContactForm = ({ siteKey }: ReactContactFormProps) => {
+const ContactForm = ({ siteKey }: ContactFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [captchaScore, setCaptchaScore] = useState<number | null>(null);
+  const [toast, setToast] = useState<{
+    message: string | undefined;
+    type: "success" | "error";
+  } | null>(null);
 
   const {
     register,
@@ -42,11 +46,6 @@ const ReactContactForm = ({ siteKey }: ReactContactFormProps) => {
   const onSubmit: SubmitHandler<ContactFormInputs> = async (
     data: ContactFormInputs,
   ) => {
-    // add google recaptcha
-    // email confirmation before saving to db
-    // add confirmation page with instructions
-    // window.location.href = "/confirm";
-    // window.location.href = "/check-your-email";
     setIsLoading(true);
     try {
       if (!(window as any).grecaptcha.ready)
@@ -63,15 +62,21 @@ const ReactContactForm = ({ siteKey }: ReactContactFormProps) => {
       });
       const recaptchaData = await recaptchaResponse.json();
       if (recaptchaData.success) {
-        setCaptchaScore(recaptchaData.score);
         const response = await axios.post("/api/save-contact", data);
-        if (response.status === 201) alert("Formulário enviado com sucesso!");
-        else alert("Erro ao enviar formulário!");
+        if (response.status === 201) {
+          console.log("Formulário enviado com sucesso!");
+          window.location.href = "/thank-you";
+        } else alert("Erro ao enviar formulário!");
       } else {
         alert("Erro na verificação do reCAPTCHA!");
       }
     } catch (error) {
-      alert(error);
+      setToast({
+        message:
+          (error as AxiosError<{ error: string }>).response?.data.error ||
+          "Erro ao enviar formulário",
+        type: "error",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -79,6 +84,7 @@ const ReactContactForm = ({ siteKey }: ReactContactFormProps) => {
 
   return (
     <>
+      {toast && <Toast message={toast.message} type={toast.type} />}
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
         <Input
           placeholder="John Doe"
@@ -101,7 +107,6 @@ const ReactContactForm = ({ siteKey }: ReactContactFormProps) => {
           error={errors.phone}
           leftIcon={<PhoneCall className="size-5 text-bgteam-primary-500" />}
         />
-        {/* Check this component validation (string/boolean) correct db if needed... */}
         <Checkbox
           name="privacy"
           register={register}
@@ -120,4 +125,4 @@ const ReactContactForm = ({ siteKey }: ReactContactFormProps) => {
   );
 };
 
-export default ReactContactForm;
+export default ContactForm;
