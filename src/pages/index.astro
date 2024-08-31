@@ -21,11 +21,6 @@ const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
     description="Consegue o teu melhor corpo de sempre, sem passar fome e a comer o que gostas! Muda o teu corpo enquanto comes o que gostas, com planos de dieta individuais e de treino para casa ou ginásio, totalmente personalizado para ti e para a tua rotina"
 >
     <main class="px-8 pt-5 lg:px-20 lg:pt-10">
-        <script
-            is:inline
-            type="text/javascript"
-            src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
-        ></script>
         <section
             class="flex items-center justify-center flex-wrap lg:flex-nowrap gap-10"
         >
@@ -115,5 +110,10 @@ const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
                 <ContactForm siteKey={RECAPTCHA_SITE_KEY} client:load />
             </div>
         </section>
+        <script
+            is:inline
+            type="text/javascript"
+            src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
+        ></script>
     </main>
 </Layout>
