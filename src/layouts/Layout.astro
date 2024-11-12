@@ -1,6 +1,7 @@
 ---
 import '@fontsource-variable/exo';
 import BGteam from '@/assets/images/BGteam.astro';
+import MetaPixel from '@/components/atom/MetaPixel.astro';
 
 interface Props {
     title: string;
@@ -26,6 +27,7 @@ const { title, description } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <MetaPixel />
     </head>
     <body class="bg-bgteam-dark text-bgteam-light flex flex-col min-h-screen">
         <slot />
