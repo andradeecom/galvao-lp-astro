@@ -1,7 +1,3 @@
----
-// You can add props here if you need to pass in a custom Pixel ID
----
-
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)

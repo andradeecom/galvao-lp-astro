@@ -8,5 +8,15 @@ import react from "@astrojs/react";
 export default defineConfig({
   integrations: [tailwind(), react()],
   output: "server",
-  adapter: vercel()
+  adapter: vercel(),
+  head: [
+    {
+      script: [
+        {
+          src: 'src/components/MetaPixel.js', // Replace with the actual file path
+          type: 'text/javascript',
+        },
+      ],
+    },
+  ],
 });
