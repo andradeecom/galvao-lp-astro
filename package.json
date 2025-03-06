@@ -1,10 +1,10 @@
 {
   "name": "galvao-coach-lp",
   "type": "module",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "author": "Eduardo Andrade <hello@andradee.com>",
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "astro dev",
@@ -19,15 +19,15 @@
   "dependencies": {
     "@astro-community/astro-embed-youtube": "^0.5.6",
     "@astrojs/check": "^0.9.4",
-    "@astrojs/react": "^3.6.2",
-    "@astrojs/tailwind": "^5.1.2",
-    "@astrojs/vercel": "^7.8.2",
+    "@astrojs/react": "^4.2.1",
+    "@astrojs/tailwind": "^6.0.0",
+    "@astrojs/vercel": "^8.1.1",
     "@fontsource-variable/exo": "^5.1.0",
     "@hookform/resolvers": "^3.9.1",
     "@supabase/supabase-js": "^2.46.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "astro": "^4.16.10",
+    "astro": "^5.4.2",
     "axios": "^1.7.7",
     "lucide-react": "^0.427.0",
     "nodemailer": "^6.9.16",
@@ -40,7 +40,6 @@
     "uuid": "^10.0.0",
     "zod": "^3.23.8"
   },
-  "packageManager": "pnpm@9.2.0+sha512.98a80fd11c2e7096747762304106432b3ddc67dcf54b5a8c01c93f68a2cd5e05e6821849522a06fb76284d41a2660d5e334f2ee3bbf29183bf2e739b1dafa771",
   "devDependencies": {
     "@types/nodemailer": "^6.4.16",
     "@types/react-google-recaptcha": "^2.1.9",
@@ -49,5 +48,6 @@
     "daisyui": "^4.12.14",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1"
-  }
+  },
+  "packageManager": "pnpm@10.5.2+sha512.da9dc28cd3ff40d0592188235ab25d3202add8a207afbedc682220e4a0029ffbff4562102b9e6e46b4e3f9e8bd53e6d05de48544b0c57d4b0179e22c76d1199b"
 }

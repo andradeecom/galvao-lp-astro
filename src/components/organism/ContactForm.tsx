@@ -7,7 +7,7 @@ import { User, Mail, PhoneCall } from "lucide-react";
 import { regexPatterns } from "@/config/utils/constants";
 import Input from "@/components/atom/Input";
 import Checkbox from "@/components/atom/Checkbox";
-import Toast from "../molecule/Toast";
+import Toast from "@/components/molecule/Toast";
 
 const schema = z.object({
   name: z.string().min(3, "Nome é um campo obrigatório"),
