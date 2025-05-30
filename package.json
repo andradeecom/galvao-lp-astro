@@ -1,8 +1,8 @@
 {
-  "name": "galvao-coach-lp",
+  "name": "galvao-coach",
   "type": "module",
-  "version": "1.2.0",
-  "author": "Eduardo Andrade <hello@andradee.com>",
+  "version": "1.2.1",
+  "author": "Eduardo Andrade <andradee.dev@gmail.com>",
   "engines": {
     "node": "22.x"
   },
@@ -19,15 +19,15 @@
   "dependencies": {
     "@astro-community/astro-embed-youtube": "^0.5.6",
     "@astrojs/check": "^0.9.4",
-    "@astrojs/react": "^4.2.1",
-    "@astrojs/tailwind": "^6.0.0",
-    "@astrojs/vercel": "^8.1.1",
+    "@astrojs/react": "^4.3.0",
+    "@astrojs/tailwind": "^6.0.2",
+    "@astrojs/vercel": "^8.1.4",
     "@fontsource-variable/exo": "^5.1.0",
     "@hookform/resolvers": "^3.9.1",
     "@supabase/supabase-js": "^2.46.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "astro": "^5.4.2",
+    "astro": "^5.8.1",
     "axios": "^1.7.7",
     "lucide-react": "^0.427.0",
     "nodemailer": "^6.9.16",
