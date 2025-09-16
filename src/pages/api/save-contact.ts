@@ -1,8 +1,8 @@
 import type { APIRoute } from "astro";
 import type { BaseContact } from "@/types/contact";
-// import { supabase } from "@/config/supabase/client";
-// import type { PostgrestError } from "@supabase/supabase-js";
-// import { transporter } from "@/config/nodemailer";
+import { supabase } from "@/config/supabase/client";
+import type { PostgrestError } from "@supabase/supabase-js";
+import { transporter } from "@/config/nodemailer";
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -38,51 +38,51 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // const { data, error } = await supabase
-    //   .from("contacts")
-    //   .insert([
-    //     {
-    //       name,
-    //       email,
-    //       phone,
-    //       privacy,
-    //     },
-    //   ])
-    //   .select();
+    const { data, error } = await supabase
+      .from("contacts")
+      .insert([
+        {
+          name,
+          email,
+          phone,
+          privacy,
+        },
+      ])
+      .select();
 
-    // if (error) {
-    //   return new Response(
-    //     JSON.stringify({
-    //       status: 500,
-    //       message: "Failed to save contact data (supabase)",
-    //       error: (error as PostgrestError).message,
-    //     }),
-    //     {
-    //       status: 500,
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     },
-    //   );
-    // }
-    // const contactData = data[0];
-    // const emailData = {
-    //   from: "BG Team <bernardo@galvaocoach.com>",
-    //   to: ["bernardo@galvaocoach.com"],
-    //   subject: "BG Team - Novo contacto!",
-    //   html: `
-    //     <h1>Olá Coach</h1>
-    //     <h3>Um novo contacto acaba de se inscrever através do site!</h3>
-    //     <p>Estes são os seus dados:</p>
-    //     <p>Nome: ${contactData.name}</p>
-    //     <p>Email: ${contactData.email}</p>
-    //     <p>Telefone: ${contactData.phone}</p>
-    //     <hr/>
-    //     <p>Esta mensagem foi enviada porque alguém se inscreveu em galvaocoach.com</p>
-    //   `,
-    // };
+    if (error) {
+      return new Response(
+        JSON.stringify({
+          status: 500,
+          message: "Failed to save contact data (supabase)",
+          error: (error as PostgrestError).message,
+        }),
+        {
+          status: 500,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+    }
+    const contactData = data[0];
+    const emailData = {
+      from: "BG Team <bernardo@galvaocoach.com>",
+      to: ["bernardo@galvaocoach.com"],
+      subject: "BG Team - Novo contacto!",
+      html: `
+        <h1>Olá Coach</h1>
+        <h3>Um novo contacto acaba de se inscrever através do site!</h3>
+        <p>Estes são os seus dados:</p>
+        <p>Nome: ${contactData.name}</p>
+        <p>Email: ${contactData.email}</p>
+        <p>Telefone: ${contactData.phone}</p>
+        <hr/>
+        <p>Esta mensagem foi enviada porque alguém se inscreveu em galvaocoach.com</p>
+      `,
+    };
     // Send email to notify the coach
-    // await transporter.sendMail(emailData);
+    await transporter.sendMail(emailData);
 
     const GHL_WEBHOOK = import.meta.env.GHL_WEBHOOK_URL;
 
@@ -122,8 +122,8 @@ export const POST: APIRoute = async ({ request }) => {
         },
       );
     }
-    // const responseData = await response.json();
-    // console.log("response from GHL -->", responseData);
+    const responseData = await response.json();
+    console.log("response from GHL -->", responseData);
 
     return new Response(
       JSON.stringify({
