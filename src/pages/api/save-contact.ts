@@ -38,11 +38,13 @@ export const POST: APIRoute = async ({ request }) => {
       email,
       phone,
       privacy,
-      utm_campaign,
-      utm_medium,
-      utm_content,
-      utm_source,
-      utm_term,
+      customField: {
+        HwItI68RCN7hP6v5CqU4: utm_campaign,
+        "6sODWUhCvafwiE7bTNtz": utm_medium,
+        "92Dje66THAuMUSfGes8N": utm_content,
+        bnca0aiaqGRV2n9yE270: utm_source,
+        Ul4IBmHJBTsmI00kXTEi: utm_term,
+      },
     };
 
     if (!name || !email || !phone) {
