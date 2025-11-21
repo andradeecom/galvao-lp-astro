@@ -21,7 +21,29 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const { name, email, phone, privacy }: BaseContact = await request.json();
+    const {
+      name,
+      email,
+      phone,
+      privacy,
+      utm_campaign,
+      utm_medium,
+      utm_content,
+      utm_source,
+      utm_term,
+    }: BaseContact = await request.json();
+
+    const ghlData = {
+      name,
+      email,
+      phone,
+      privacy,
+      utm_campaign,
+      utm_medium,
+      utm_content,
+      utm_source,
+      utm_term,
+    };
 
     if (!name || !email || !phone) {
       return new Response(
@@ -106,7 +128,7 @@ export const POST: APIRoute = async ({ request }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, email, phone, privacy }),
+      body: JSON.stringify(ghlData),
     });
     if (!response.ok) {
       return new Response(

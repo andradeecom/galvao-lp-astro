@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios, { AxiosError } from "axios";
@@ -18,8 +18,13 @@ const schema = z.object({
   phone: z
     .string()
     .min(9, "Número de telefone deve ter no mínimo 9 dígitos")
-    .regex(regexPatterns.PHONE, "Número de telefone inválido"),
+    .regex(regexPatterns.PHONE, "Número de telefone inválido"),
   privacy: z.boolean(),
+  utm_campaign: z.string().optional(),
+  utm_medium: z.string().optional(),
+  utm_content: z.string().optional(),
+  utm_source: z.string().optional(),
+  utm_term: z.string().optional(),
 });
 
 type ContactFormInputs = z.infer<typeof schema>;
@@ -39,9 +44,29 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<ContactFormInputs>({
     resolver: zodResolver(schema),
   });
+
+  // Extract UTM parameters from URL on component mount
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmParams = [
+      "utm_campaign",
+      "utm_medium",
+      "utm_content",
+      "utm_source",
+      "utm_term",
+    ] as const;
+
+    utmParams.forEach((param) => {
+      const value = urlParams.get(param);
+      if (value) {
+        setValue(param, value);
+      }
+    });
+  }, [setValue]);
 
   const onSubmit: SubmitHandler<ContactFormInputs> = async (
     data: ContactFormInputs,
@@ -113,6 +138,12 @@ const ContactForm = ({ siteKey }: ContactFormProps) => {
           error={errors.privacy}
           isRequired
         />
+        {/* Hidden UTM inputs */}
+        <input type="hidden" {...register("utm_campaign")} />
+        <input type="hidden" {...register("utm_medium")} />
+        <input type="hidden" {...register("utm_content")} />
+        <input type="hidden" {...register("utm_source")} />
+        <input type="hidden" {...register("utm_term")} />
         <button className="btn btn-primary">
           {isLoading ? (
             <span className="loading loading-spinner loading-sm"></span>
